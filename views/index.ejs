@@ -3,135 +3,157 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spotify-like Music Uploads</title>
+    <title>SpotMusc - Music Uploads</title>
     <style>
-        /* Spotify-like styling */
+        
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: white;
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a2e; 
+            color: #ffffff;
             margin: 0;
             padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
         }
 
+        
         nav {
-            background-color: #1DB954;
-            padding: 15px;
+            background-color: #5c5c81; 
+            padding: 20px;
+            width: 100%;
             display: flex;
-            justify-content: space-between; /* Aligns items to both sides */
+            justify-content: space-between;
             align-items: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
 
         nav h1 {
-            margin: 0; /* Removes margin for title */
-            font-size: 1.5rem; /* Adjusts font size for title */
-            color: white; /* Color for title */
+            margin: 0;
+            font-size: 2rem;
+            color: #0f3460; 
         }
 
         nav a {
-            color: white;
+            color: #00adb5; 
             text-decoration: none;
             font-size: 1.2rem;
-            padding: 10px;
+            padding: 10px 15px;
+            transition: background 0.3s, transform 0.3s;
         }
 
-        nav a:hover {
-            background-color: #1ED760;
-            border-radius: 5px;
+        
+        .main-content {
+            margin-top: 70px; 
+            width: 90%;
+            max-width: 1200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         h1, h2 {
             text-align: center;
-            color: white;
+            color: #00adb5; 
+            font-size: 2.5rem;
         }
 
-        h2 {
-            margin-top: 40px;
-            font-size: 1.8rem;
-        }
-
-        /* Main container with flex layout */
+        
         .container {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            margin: 40px;
-            padding: 20px;
-            background-color: #282828;
+            margin: 20px 0;
+            padding: 30px;
+            background-color: #1b1b2e; 
             border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 100%;
         }
 
-        /* Personal Hits section */
-        .personal-hits {
-            flex: 1;
-            text-align: left;
-            color: #1DB954;
-            font-size: 1.5rem;
-            font-weight: bold;
-            padding: 20px;
-        }
-
-        /* Album Cover section */
+        
         .album-cover {
-            flex: 1;
             text-align: center;
+            margin-bottom: 30px;
         }
 
         .album-cover img {
-            width: 300px;
-            height: 300px;
+            width: 350px;
+            height: 350px;
             border-radius: 50%;
             object-fit: cover;
+            transition: transform 0.3s;
         }
 
-        /* Upload form section */
+        .album-cover img:hover {
+            transform: scale(1.1);
+        }
+
+        
         .upload-form {
-            flex: 1;
-            text-align: right;
-            padding: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .upload-form input[type="file"], .upload-form input[type="text"], .upload-form button {
-            margin-top: 10px;
-            padding: 10px;
-            font-size: 1rem;
-            background-color: #333;
-            color: white;
+        .upload-form input[type="file"], 
+        .upload-form input[type="text"], 
+        .upload-form button {
+            margin-top: 15px;
+            padding: 15px;
+            font-size: 1.2rem;
+            background-color: #0f3460; 
+            color: #ffffff; 
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            transition: background 0.3s, transform 0.3s;
         }
 
         .upload-form button {
-            background-color: #1DB954;
             cursor: pointer;
         }
 
         .upload-form button:hover {
-            background-color: #1ED760;
+            background-color: #00adb5; 
+            transform: translateY(-2px);
         }
 
-        /* Uploaded songs section */
+        
+        h2 {
+            margin: 40px 0 20px;
+            color: #00adb5; 
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
             margin: 0;
+            width: 100%;
         }
 
         li {
             margin: 20px 0;
-            background-color: #333;
+            background-color: #0f3460; 
             padding: 20px;
             border-radius: 10px;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         li img {
             margin-right: 20px;
-            width: 60px;
-            height: 60px;
+            width: 80px;
+            height: 80px;
             object-fit: cover;
             border-radius: 5px;
         }
@@ -146,11 +168,11 @@
             display: block;
             margin: 20px auto;
             width: 100%;
-            max-width: 200px;
+            max-width: 250px;
         }
 
         button {
-            background-color: #1DB954;
+            background-color: #ff4d4d; 
             color: white;
             border: none;
             padding: 10px 20px;
@@ -158,81 +180,61 @@
             cursor: pointer;
             border-radius: 5px;
             margin-left: 10px;
+            transition: background 0.3s, transform 0.3s;
         }
 
         button:hover {
-            background-color: #1ED760;
+            background-color: #ff0000; 
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
-    <!-- Navigation Bar -->
+    
     <nav>
-        <h1>SpotMusc</h1> <!-- Title on the left -->
-        <div>
-            <a href="/">Home</a>
-            <a href="/about">About</a>
-        </div>
+        <h1>Spotify</h1>
     </nav>
 
-    <!-- Main Container with Personal Hits, Album Cover, and Upload Form -->
-    <div class="container">
-
-        <!-- Album Cover (Center) -->
-        <div class="album-cover">
-            <% if (songs.length > 0 && songs[0].album_cover) { %>
-                <img src="<%= songs[0].album_cover %>" alt="Album Cover">
-            <% } else { %>
-                <img src="https://via.placeholder.com/300?text=My+Personal+Hits" alt="My Personal Hits">
-            <% } %>
-        </div>
-
-        <!-- Upload Form (Right Side) -->
-        <div class="upload-form">
-            <h1>Upload Your Music</h1>
-            <form action="/upload" method="POST" enctype="multipart/form-data">
-                <label for="uploaderName">Music Name:</label>
-                <input type="text" name="uploaderName" id="uploaderName" required>
-                <br><br>
-                <label for="mp3file">Upload MP3 File:</label>
-                <input type="file" name="mp3file" id="mp3file" accept="audio/mp3" required>
-                <br><br>
-                <label for="albumCover">Upload Album Cover (Optional):</label>
-                <input type="file" name="albumCover" id="albumCover" accept="image/*">
-                <br><br>
-                <button type="submit">Upload</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Uploaded Songs Section -->\
-    <h2>My Personal Hits</h2>
-    <ul>
-        <% songs.forEach(song => { %>
-            <li>
-                <div class="song-details">
-                    <% if (song.album_cover) { %>
-                        <img src="<%= song.album_cover %>" alt="Album Cover">
-                    <% } else { %>
-                        <img src="https://via.placeholder.com/60?text=No+Cover" alt="No Album Cover">
-                    <% } %>
-                    <p><strong><%= song.uploader_name || 'Unknown Artist' %></strong></p>
-                </div>
-        
-                <audio controls>
-                    <source src="<%= song.filepath %>" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-        
-                <form action="/delete" method="POST">
-                    <input type="hidden" name="song_id" value="<%= song.id %>">
-                    <button type="submit">Delete</button>
+    <div class="main-content">
+        <div class="container">
+            <div class="upload-form">
+                <h1>Upload Your Music</h1>
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <input type="text" name="uploaderName" id="uploaderName" placeholder="Music Name" required>
+                    <input type="file" name="mp3file" id="mp3file" accept="audio/mp3" required>
+                    <input type="file" name="albumCover" id="albumCover" accept="image/*">
+                    <button type="submit">Upload</button>
                 </form>
-            </li>
-        <% }) %>
-        </ul>
-        
+            </div>
+        </div>
 
+        <h2>My Playlist</h2>
+        <ul>
+            <% songs.forEach(song => { %>
+                <li>
+                    <div class="song-details">
+                        <% if (song.album_cover) { %>
+                            <img src="<%= song.album_cover %>" alt="Album Cover">
+                        <% } else { %>
+                            <img src="https://via.placeholder.com/80?text=No+Cover" alt="No Album Cover">
+                        <% } %>
+                        <p><strong><%= song.uploader_name || 'Unknown Artist' %></strong></p>
+                    </div>
+            
+                    <audio controls>
+                        <source src="<%= song.filepath %>" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+            
+                    <form action="/delete" method="POST">
+                        <input type="hidden" name="song_id" value="<%= song.id %>">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% }) %>
+        </ul>
+
+    </div>
 </body>
 </html>
