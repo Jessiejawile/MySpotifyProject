@@ -42,9 +42,9 @@ CREATE TABLE IF NOT EXISTS `songs` (
 --
 
 INSERT INTO `songs` (`id`, `filename`, `filepath`, `album_cover`, `uploaded_at`, `uploader_name`) VALUES
-(14, '1727196455707.mp3', '/uploads/1727196455707.mp3', '/uploads/1727196455782.jpg', '2024-09-24 16:47:35', 'Dance Monkey'),
-(15, '1727196485907.mp3', '/uploads/1727196485907.mp3', '/uploads/1727196485965.jpg', '2024-09-24 16:48:05', 'Shape Of You'),
-(16, '1727196516671.mp3', '/uploads/1727196516671.mp3', '/uploads/1727196516731.jpg', '2024-09-24 16:48:36', 'Blank Space');
+(14, '1727327559289.mp3', '/uploads/1727327559289.mp3', '/uploads/1727327559325.jpg', '2024-09-26 13:12:39', 'mama said'),
+(15, '1727327899281.mp3', '/uploads/1727327899281.mp3', '/uploads/1727327899312.jpg', '2024-09-26 13:18:19', 'Im yours'),
+(16, '1727327966008.mp3', '/uploads/1727327966008.mp3', '/uploads/1727327966065.jpg', '2024-09-26 13:19:26', 'Beautiful Girls');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
